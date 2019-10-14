@@ -170,3 +170,9 @@ f%>%group_by(area_fac,depth_fac)%>%summarise(parcel.lengthmin=min(parcel.length.
                                              parcel.length.mquantile2=quantile(parcel.length.m,probs = c(0.95)),
                                              parcel.length.mmax=max(parcel.length.m))
 
+f%>%group_by(area_fac,depth_fac)%>%summarise(min(parcel.length.m),
+                                             quantile(parcel.length.m,probs = c(0.05)),
+                                             median(parcel.length.m),
+                                             mean(parcel.length.m),
+                                             quantile(parcel.length.m,probs = c(0.95)),
+                                             max(parcel.length.m))
