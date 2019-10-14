@@ -5,7 +5,7 @@ Assignment; Lab4,summarize and merge
 load(file="fish_data.Rdata")
 fish
 f=fish
-library("tidyverse")
+library(tidyverse)
 # tapply ----( a tidyverse function)
 # mean of parcel.density.m3
 tapply(X=f$parcel.density.m3, INDEX=list(f$transect.id), FUN=mean)
@@ -160,3 +160,10 @@ c
 
 c[1,1]
 c[1,3]
+f
+f%>%group_by(area_fac,depth_fac)%>%summarise(parcel.lengthmin=min(parcel.length.m),
+                                             parcel.length.mquantile1=quantile(parcel.length.m,probs = c(0.05)),
+                                             parcel.length.mmid=median(parcel.length.m),
+                                             parcel.length.maverage=mean(parcel.length.m),
+                                             parcel.length.mquantile2=quantile(parcel.length.m,probs = c(0.95)),
+                                             parcel.length.mmax=max(parcel.length.m))
